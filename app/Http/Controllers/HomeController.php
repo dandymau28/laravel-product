@@ -21,9 +21,8 @@ class HomeController extends Controller
             $data = DB::table('master.products')->get();
 
             return DataTables::of($data)
+            ->addIndexColumn()
             ->addColumn('image', function($data) {
-                // $img = ;
-
                 return "<img src='". asset($data->image) ."' class='product-image' width='100px' height='100px'>";
             })
             ->addColumn('btnEdit', function($data){

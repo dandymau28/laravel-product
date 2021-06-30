@@ -19,9 +19,10 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <table id="tb_barang" class="table table-bordered table-hover">
+        <table id="tb_barang" class="table table-bordered table-hover display nowrap" style="width: 100%">
             <thead>
                 <tr>
+                    <th rowspan="2">#</th>
                     <th rowspan="2">Kode Produk</th>
                     <th rowspan="2">Gambar</th>
                     <th rowspan="2">Nama Produk</th>
@@ -35,6 +36,7 @@
             </thead>
             <tfoot>
                 <tr>
+                    <th rowspan="2">#</th>
                     <th rowspan="2">Kode Produk</th>
                     <th rowspan="2">Gambar</th>
                     <th rowspan="2">Nama Produk</th>
@@ -279,12 +281,16 @@
                 serverSide: true,
                 ajax: "/",
                 scrollY: "500px",
-                // scrollX: true,
+                scrollX: true,
                 scrollCollapse: true,
                 fixedColumns: {
                     leftColumns: 1
                 },
                 columns: [{
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex'
+                    },
+                    {
                         data: 'product_code',
                         name: 'product_code'
                     },
