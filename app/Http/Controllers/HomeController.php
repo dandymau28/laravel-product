@@ -26,13 +26,17 @@ class HomeController extends Controller
 
                 return "<img src='". asset($data->image) ."' class='product-image' width='100px' height='100px'>";
             })
-            ->addColumn('action', function($data){
+            ->addColumn('btnEdit', function($data){
                 $btnEdit = "<button onclick='editUrl(" . $data->id  . ")' class='btn btn-warning btn-sm mx-2'>Edit</button>";
+
+                return $btnEdit;
+            })
+            ->addColumn('btnDelete', function($data){
                 $btnDelete = "<button onclick='deleteUrl(" . $data->id  . ")' class='btn btn-danger btn-sm mx-2'>Delete</button>";
 
-                return $btnEdit . $btnDelete;
+                return $btnDelete;
             })
-            ->rawColumns(['image', 'action'])
+            ->rawColumns(['image', 'btnEdit', 'btnDelete'])
             ->make(true);
         }
 

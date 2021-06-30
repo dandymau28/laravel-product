@@ -22,20 +22,28 @@
         <table id="tb_barang" class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>Kode Produk</th>
-                    <th>Gambar</th>
-                    <th>Nama Produk</th>
-                    <th>Harga</th>
-                    <th>Action</th>
+                    <th rowspan="2">Kode Produk</th>
+                    <th rowspan="2">Gambar</th>
+                    <th rowspan="2">Nama Produk</th>
+                    <th rowspan="2">Harga</th>
+                    <th colspan="2">Action</th>
+                </tr>
+                <tr>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <th>Kode Produk</th>
-                    <th>Gambar</th>
-                    <th>Nama Produk</th>
-                    <th>Harga</th>
-                    <th>Action</th>
+                    <th rowspan="2">Kode Produk</th>
+                    <th rowspan="2">Gambar</th>
+                    <th rowspan="2">Nama Produk</th>
+                    <th rowspan="2">Harga</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tr>
+                    <th colspan="2">Action</th>
                 </tr>
             </tfoot>
         </table>
@@ -188,8 +196,6 @@
             let image = document.getElementById("add_image").files[0]
 
             formData.append('image', image, 'gambarProduk');
-            // console.log(image);
-            // console.log(formData);
 
             $.each($(`#${form}`).serializeArray(), (i, field) => {
                 formData.append(field.name, field.value);
@@ -272,6 +278,12 @@
                 processing: true,
                 serverSide: true,
                 ajax: "/",
+                scrollY: "500px",
+                // scrollX: true,
+                scrollCollapse: true,
+                fixedColumns: {
+                    leftColumns: 1
+                },
                 columns: [{
                         data: 'product_code',
                         name: 'product_code'
@@ -291,8 +303,14 @@
                         name: 'price'
                     },
                     {
-                        data: 'action',
-                        name: 'action',
+                        data: 'btnEdit',
+                        name: 'btnEdit',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: 'btnDelete',
+                        name: 'btnDelete',
                         orderable: false,
                         searchable: false
                     }

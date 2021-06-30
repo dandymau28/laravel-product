@@ -18,3 +18,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/download', [HomeController::class, 'downloadExcel']);
 
 // Route::get('/data-product', [HomeController::class, 'dataProvide']);
+
+Route::get('/welcome', function() {
+    return view('adminlte-laravel');
+});
